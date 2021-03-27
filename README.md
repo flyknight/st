@@ -36,7 +36,7 @@ features that make it literally the best terminal emulator ever:
 
 ## Installation for newbs
 
-You should have xlib header files and libharfbuzz build files installed.
+You should have xlib header files and libharfbuzz (harfbuzz on OpenBSD) build files installed.
 
 ```
 git clone https://github.com/LukeSmithxyz/st
@@ -55,8 +55,9 @@ default build, since it asks `fontconfig` for your system monospace font.  It
 might be obvious, but `libX11` and `libXft` are required as well. Chances are,
 you have all of this installed already.
 
-On OpenBSD, be sure to edit `config.mk` first and remove `-lrt` from the
-`$LIBS` before compiling.
+On OpenBSD, be sure to edit `config.mk` first, comment the first `$LIBS` and uncomment
+and the `$LIBS` below #OpenBSD. Also add `$(PKG_CONFIG) --libs harfbuzz` on the OpenBSD `$LIBS`
+before compiling.
 
 Be sure to have a composite manager (`xcompmgr`, `picom`, etc.) running if you
 want transparency.
